@@ -1,0 +1,56 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>Untitled Document</title>
+
+<script>
+function toggleColumn(n) {
+    var currentClass = document.getElementById("mytable").className;
+    if (currentClass.indexOf("show"+n) != -1) {
+        document.getElementById("mytable").className = currentClass.replace("show"+n, "");
+    }
+    else {
+        document.getElementById("mytable").className += " " + "show"+n;
+    }
+}
+
+
+</script>
+
+<style>
+.col1 {display: none; }
+.col2 {display: none; }
+.col3 {display: none; }
+
+table.show1 .col1 { display: table-cell; }
+table.show2 .col2 { display: table-cell; }
+table.show3 .col3 { display: table-cell; }
+</style>
+</head>
+
+
+
+<body>
+
+<table id="mytable">
+    <tr>
+        <th>Column 1 <a href="javascript:toggleColumn(1)">show/hide</a></th>
+        <th class="col1">1a</th>
+        <th class="col1">1b</th>
+        <th>Column 2<a href="javascript:toggleColumn(2)">show/hide</a></th>
+        <th class="col2">2a</th>
+        <th class="col2">2b</th>
+    </tr>
+    <tr>
+        <td>100</td>
+        <td class="col1">40</td>
+        <td class="col1">60</td>
+        <td>200</td>
+        <td class="col2">110</td>
+        <td class="col2">90</td>
+    </tr>
+</table>
+
+</body>
+</html>

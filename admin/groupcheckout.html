@@ -1,0 +1,132 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>CRESST Checkout System</title>
+
+<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.3.2/jquery.min.js"></script>
+<script type="text/javascript" src="animatedcollapse.js">
+
+/***********************************************
+* Animated Collapsible DIV v2.4- (c) Dynamic Drive DHTML code library (www.dynamicdrive.com)
+* This notice MUST stay intact for legal use
+* Visit Dynamic Drive at http://www.dynamicdrive.com/ for this script and 100s more
+***********************************************/
+
+</script>
+
+
+<script type="text/javascript">
+
+animatedcollapse.addDiv('name', 'fade=1,height=80px')
+animatedcollapse.addDiv('scan', 'fade=1,height=100px')
+animatedcollapse.addDiv('terms', 'fade=1,height=120px')
+animatedcollapse.addDiv('checkout', 'fade=1,height=120px')
+animatedcollapse.addDiv('return', 'fade=1,height=120px')
+
+animatedcollapse.ontoggle=function($, divobj, state){ //fires each time a DIV is expanded/contracted
+	//$: Access to jQuery
+	//divobj: DOM reference to DIV being expanded/ collapsed. Use "divobj.id" to get its ID
+	//state: "block" or "none", depending on state
+}
+
+animatedcollapse.init()
+
+
+function step1()
+{
+	animatedcollapse.hide('name');
+	animatedcollapse.show('scan');
+}
+
+function keyup()
+{
+	var timer;
+
+
+       clearTimeout(timer);
+       timer=setTimeout(function delimiter(){document.getElementById("groupcheckout").value+=",";},1000);
+
+	
+}
+
+
+function getCheckoutType(str)
+{
+	if (str==0)
+	{
+		animatedcollapse.hide('checkout');
+		animatedcollapse.show('return');
+		document.getElementById("stat").value="IN";
+	}
+	else
+	{
+		animatedcollapse.show('checkout');
+		animatedcollapse.hide('return');
+		document.getElementById("stat").value="OUT";
+	}
+	
+}
+
+function getLabel(str)
+{
+if (str=="")
+  {
+  document.getElementById("cselabel").innerHTML="";
+  return;
+  }
+if (window.XMLHttpRequest)
+  {// code for IE7+, Firefox, Chrome, Opera, Safari
+  xmlhttp=new XMLHttpRequest();
+  }
+else
+  {// code for IE6, IE5
+  xmlhttp=new ActiveXObject("Microsoft.XMLHTTP");
+  }
+xmlhttp.onreadystatechange=function()
+  {
+  if (xmlhttp.readyState==4 && xmlhttp.status==200)
+    {
+    document.getElementById("cselabel").value=xmlhttp.responseText;		
+	animatedcollapse.hide('scan');
+	animatedcollapse.show('terms');	
+    }
+  }
+  
+xmlhttp.open("GET","cselabel.php?q="+str,true);
+xmlhttp.send();
+}
+</script>
+
+
+<link href="style.css" rel="stylesheet" type="text/css" />
+</head>
+
+<body>
+
+<div id="mainbox">
+<form id="form1" name="form1" method="post" action="action.php">
+
+<input type="hidden" name="stat" id="stat" value="OUT">
+
+Group Checkout v. 1<br />
+<textarea name="groupcheckout" id="groupcheckout" onkeyup="keyup()" rows="20"></textarea>
+
+
+
+<input type="submit" name="Check Out" value="Check Out"/>
+ 
+</form>
+</div>
+<div id="return" style="width: 500px; display:none">
+<table cellspacing="15" class="returnscantable"><tr><td>
+<strong>Return: </strong><input name="scanreturn" type="text" id="scanreturn" size="40" onkeyup="getLabel(this.value)"/>
+</td></tr></table>
+</div>
+
+</div>
+
+
+
+</body>
+</html>
