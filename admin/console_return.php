@@ -26,23 +26,11 @@
 	// sending query
 	$result = mysql_query("SELECT * FROM status WHERE status='OUT'") or die(mysql_error());
 
-/*echo "<table>";
-	while($row = mysql_fetch_array($result))
-	{
-		echo "<tr>";
-		echo "<td>" . $row['label'] . "</td>";
-		echo "<td>" . $row['barcode1'] . "</td>";
-		echo "</tr>";
-	}
-
-echo "</table>";*/
-
-	//$fields_num = mysql_num_fields($result);
 	
 	echo "<form id='formReturn' name='formReturn' method='post' action='console_returnAction.php' >";
 	
 	// printing table headers
-	echo "<table border='1' cellpadding='5' class='altrowstable' align='center'><tr><th>Index</th><th>Add</th><th>Type</th><th>Equipment ID</th><th>Barcode 1</th><th>Status</th></tr>\n";
+	echo "<table border='1' cellpadding='5' class='altrowstable' align='center'><tr><th>Index</th><th>Add</th><th>Type</th><th>Equipment ID</th><th>Firstname</th><th>Lastname</th><th>Barcode 1</th><th>Status</th></tr>\n";
 
 		// printing table rows
 		
@@ -70,6 +58,8 @@ echo "</table>";*/
 				echo "<td><a href='javascript:Return(\"".$row['type']."\", \"".$row['label']."\", \"".$row['barcode1']."\")'>Return</a></td>";
 				echo "<td>" . $row['type'] . "</td><input type='hidden' name='type".$i."' value='".$row['type']."' />";
 				echo "<td>" . $row['label'] . "</td><input type='hidden' name='label".$i."' value='".$row['label']."' />";
+				echo "<td>" . $row['firstname'] . "</td><input type='hidden' name='fname".$i."' value='".$row['fname']."' />";
+				echo "<td>" . $row['lastname'] . "</td><input type='hidden' name='lname".$i."' value='".$row['lname']."' />";
 				echo "<td>" . $row['barcode1'] . "</td><input type='hidden' name='barcode1".$i."' value='".$row['barcode1']."' />";
 				echo "<td>" . $row['status'] . "</td>";
 				echo "</tr>\n";

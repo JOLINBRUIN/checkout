@@ -213,9 +213,12 @@ function show_table(str)
 	{
 		$("#listing").load("console_log.php");
 
-		//document.getElementById('group').classList.add('current_page_item');
-		//document.getElementById('listing').style.marginLeft='auto';
 	}
+	else if (str == 'return')
+	{
+		$("#listing").load("console_return.php");
+
+	}	
 	else if (str == 'status')
 	{		
 		$("#listing").load("console_status.php");
@@ -308,6 +311,7 @@ function add(type, label, barcode)
  <ul class="group" id="nav-one">
     <li class="current_page_item"><a href="javascript:show_table('placeholder');">Pending</a></li>
     <li><a href="javascript:show_table('add');">Add</a></li>
+    <li><a href="javascript:show_table('return');">Return</a></li>
     <li><a href="javascript:show_table('status');">Status</a></li>
     <li><a href="javascript:show_table('log');">Log</a></li>
     <li><a href="javascript:show_table('group');">Group</a></li>

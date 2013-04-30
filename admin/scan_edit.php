@@ -81,7 +81,7 @@ $now = date('Y-m-d H:i:s', $timestamp);
 					}
 					elseif($key==11)
 					{
-						echo "<td><select id='status".$i."' name='status".$i."' onchange='javascript:status_dropdown(".$i.");'><option value='".$cell."'>".$cell."</option><option value='AVAILABLE'>AVAILABLE</option><option value='OUT'>OUT</option><option value='DOWN'>DOWN</option><option value='other'>Other</option></select><p><input id='otherstatus".$i."' name='otherstatus".$i."' value='".$cell."' style='display:none'></p></td>";
+						echo "<td><select id='status".$i."' name='status".$i."' onchange='javascript:status_dropdown(".$i.");'><option value='".$cell."'>".$cell."</option><option value='AVAILABLE'>AVAILABLE</option><option value='OUT'>OUT</option><option value='OUT OF SERVICE'>OUT OF SERVICE</option><option value='other'>Other</option></select><p><input id='otherstatus".$i."' name='otherstatus".$i."' value='".$cell."' style='display:none'></p></td>";
 					}
 					else
 					{
